@@ -48,7 +48,8 @@
             <ul class="nav navbar-nav">
                 <li>
                     @if(Auth::user())
-                    <a href="logout">Log Out</a>
+                    <a href="logout">
+                        <span class="glyphicon glyphicon-log-out"></span> Log Out</a>
                     @else
                     <a href="login">Log In</a>
                     @endif

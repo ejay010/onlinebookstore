@@ -35,6 +35,8 @@ Route::post('registerProfessor', 'Auth\AuthController@postRegisterProfessor');
 Route::get('professorLogin', 'Auth\AuthController@getProfessorLogin');
 Route::post('professorLogin', 'Auth\AuthController@postProfessorLogin');
 Route::get('professorPage', 'PagesController@ProfessorsRoom');
+Route::get('professorPage/requestBook', 'BooksController@request');
+Route::post('professorPage/requestBook', 'BooksController@saveRequest');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

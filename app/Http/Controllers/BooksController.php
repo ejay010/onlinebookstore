@@ -114,4 +114,12 @@ class BooksController extends Controller {
 		//
 	}
 
+    public function request(){
+        return view('professor.bookRequest');
+    }
+
+    public function saveRequest(){
+        return 'hello';
+    }
+
 }

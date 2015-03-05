@@ -53,7 +53,7 @@ class PagesController extends Controller {
         if(Auth::User()){
             $user = Auth::User();
             if ($user->type == 'professor'){
-                return view('profile.professorProfile')->with($user);
+                return view('profile.professorProfile', compact('user'));
             } else {
                 return 'You dont have the right to be here';
             }
