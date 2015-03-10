@@ -47,20 +47,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
-                    @if(Auth::user())
-                    <a href="logout">
-                        <span class="glyphicon glyphicon-log-out"></span> Log Out</a>
-                    @else
-                    <a href="login">Log In</a>
-                    @endif
-                </li>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="about">About</a>
-                </li>
+                @yield('links' , View::make('navs.navdefault'))
             </ul>
         </div>
         <!-- /.navbar-collapse -->

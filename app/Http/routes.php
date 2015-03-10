@@ -12,6 +12,11 @@
 */
 
 // General routes
+use App\bookrequest;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
+
+
 Route::get('/','PagesController@index');
 Route::get('about', 'PagesController@about');
 Route::get('logout', 'LoginController@logout');
@@ -28,6 +33,13 @@ Route::post('captainsChair', 'Auth\AuthController@postAdminLogin');
 Route::get('captainsRoom', 'PagesController@CaptainsRoom');
 Route::get('captainsRoom/addBook', 'BooksController@create');
 Route::post('captainsRoom/addBook', 'BooksController@store');
+Route::get('captainsRoom/bookRequests', 'BooksController@captainsOrders');
+Route::post('captainsRoom/bookRequests', function(Requests\ApproveBookRequest $request){
+    $theBookRequest = bookrequest::find($request['id']);
+    $theBookRequest->approved = $request['approved'];
+    $theBookRequest->save();
+    return redirect('captainsRoom/bookRequests')->with('done', 'http://www.todayifoundout.com/wp-content/uploads/2010/04/ok.gif');
+});
 
 //Professor routes
 Route::get('professorRegister', 'Auth\AuthController@getProfessorRegister');
@@ -37,6 +49,7 @@ Route::post('professorLogin', 'Auth\AuthController@postProfessorLogin');
 Route::get('professorPage', 'PagesController@ProfessorsRoom');
 Route::get('professorPage/requestBook', 'BooksController@request');
 Route::post('professorPage/requestBook', 'BooksController@saveRequest');
+Route::get('professorPage/allbookRequests', 'BooksController@showAllRequests');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

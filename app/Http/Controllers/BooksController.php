@@ -1,10 +1,13 @@
 <?php namespace App\Http\Controllers;
 
 use App\book;
+use App\bookrequest;
 use App\Http\Requests;
 
 use App\Http\Requests\adminAddBookRequest;
+use App\Http\Requests\professorBookRequest;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
@@ -115,11 +118,25 @@ class BooksController extends Controller {
 	}
 
     public function request(){
-        return view('professor.bookRequest');
+        $professor = Auth::user();
+        return view('professor.bookRequest', compact('professor'));
     }
 
-    public function saveRequest(){
-        return 'hello';
+    public function saveRequest(professorBookRequest $request){
+        bookrequest::create($request->all());
+        return redirect('/professorPage/allbookRequests');
+    }
+
+    public function showAllRequests(){
+        $thisprofessor = Auth::user();
+        $bookRequests = bookrequest::all()->where('professor', $thisprofessor['username']);
+
+        return view('professor.allBookRequests', compact('bookRequests'));
+    }
+
+    public function captainsOrders(){
+        $bookRequests = bookrequest::all();
+        return view('captainsRoom.allbookrequests', compact('bookRequests'));
     }
 
 }
