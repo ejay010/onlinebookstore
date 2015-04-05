@@ -24,7 +24,8 @@ class CreateBooksTable extends Migration {
             $table->longText('description');
             $table->text('category');
             $table->text('class');
-            $table->text('professor');
+            $table->integer('professor_id')->unsigned();
+            $table->foreign('professor_id')->references('id')->on('users');
             $table->text('thumbnail');
             $table->integer('onHand')->unsigned();
 			$table->timestamps();

@@ -12,3 +12,7 @@
 <li>
     <a href="about">About</a>
 </li>
+
+<li id="myCartLink" style="display: inline;">
+    <a href="/viewCart" id="myCartValue">My Cart ({{ count(Session::get('cart')) }})</a>
+</li>

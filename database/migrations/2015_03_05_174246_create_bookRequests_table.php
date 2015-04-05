@@ -18,7 +18,8 @@ class CreateBookRequestsTable extends Migration {
             $table->string('title');
             $table->string('author');
             $table->string('publisher');
-            $table->string('professor');
+            $table->integer('professor_id')->unsigned();
+            $table->foreign('professor_id')->references('id')->on('users');
             $table->integer('edition',false, true);
             $table->char('approved', 1);
             $table->string('class');
@@ -33,7 +34,7 @@ class CreateBookRequestsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('bookRequests');
+		Schema::drop('bookrequests');
 	}
 
 }

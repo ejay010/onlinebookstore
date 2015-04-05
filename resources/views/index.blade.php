@@ -50,11 +50,10 @@
             </div>
 
             <div class="row">
-                @if (Auth::user())
                 @foreach($books as $book)
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <img src="/assets/bookImages/{{ $book->thumbnail }}" alt="">
+                        <a href="books/{{ $book->id }}"><img src="/assets/bookImages/{{ $book->thumbnail }}" alt=""></a>
                         <div class="caption">
                             <h4 class="pull-right">${{ $book->pprice }}</h4>
                             <h4><a href="#">{{ $book->title }}</a>
@@ -64,9 +63,6 @@
                     </div>
                 </div>
                 @endforeach
-                @else
-                <h1>Please login</h1>
-                @endif
                     <!-- <span class="glyphicon glyphicon-star"></span> -->
 
             </div>

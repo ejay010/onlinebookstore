@@ -1,12 +1,16 @@
 <?php namespace App\Http\Controllers;
 
 use App\book;
+use App\books;
 use App\Http\Requests;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 
 class PagesController extends Controller {
+
 
 	//
     public function index()
@@ -41,7 +45,7 @@ class PagesController extends Controller {
                 return view('profile.captainsRoom');
             }
             else {
-                return 'You dont have the right';
+                return 'You don\'t have the rights';
             }
         } else {
             return redirect('captainsChair');
@@ -62,4 +66,10 @@ class PagesController extends Controller {
         }
     }
 
+    public function viewCart(){
+        $shoppingCartController = new ShoppingCartController();
+        $items = $shoppingCartController->index();
+        $cartTotal = $shoppingCartController->getCartTotal();
+        return view('profile.cartView', compact('items', 'cartTotal'));
+    }
 }

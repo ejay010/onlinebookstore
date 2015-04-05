@@ -24,8 +24,14 @@ Route::get('logout', 'LoginController@logout');
 //Student routes
 Route::post('registerStudent', 'Auth\AuthController@postRegisterStudent');
 Route::post('login', 'Auth\AuthController@postlogin');
-Route::get('login', 'Auth\AuthController@getStudentlogin');
-Route::get('register', 'Auth\AuthController@getStudentRegister');
+Route::get('/login', 'Auth\AuthController@getStudentlogin');
+Route::get('/register', 'Auth\AuthController@getStudentRegister');
+Route::get('/viewCart', 'PagesController@viewCart');
+Route::get('books/{id}', 'BooksController@show');
+Route::post('books/{id}', 'BooksController@createComment');
+Route::post('/addToCart', 'ShoppingCartController@addToCart');
+
+
 
 //Admin routes
 Route::get('captainsChair', 'Auth\AuthController@getAdminLogin');

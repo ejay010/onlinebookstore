@@ -46,8 +46,8 @@
 {!! Form::label('class', 'Class required for') !!}
 {!! Form::text('class', null) !!}
 <br>
-{!! Form::label('professor', 'Professor: ') !!}
-{!! Form::text('professor', null) !!}
+{!! Form::label('professor_id', 'Professor: ') !!}
+{!! Form::select('professor_id', $names, null) !!}
 <br>
 {!! Form::label('onHand', 'Quantity On Hand: ') !!}
 {!! Form::text('onHand', null) !!}

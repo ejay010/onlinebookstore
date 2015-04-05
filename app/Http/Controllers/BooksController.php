@@ -2,13 +2,17 @@
 
 use App\book;
 use App\bookrequest;
+use App\books;
+use App\comment;
 use App\Http\Requests;
 
 use App\Http\Requests\adminAddBookRequest;
 use App\Http\Requests\professorBookRequest;
 
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class BooksController extends Controller {
@@ -31,7 +35,14 @@ class BooksController extends Controller {
 	public function create()
 	{
 		//
-        return view('captainsRoom.addBook');
+        $professors = User::where('type', '=', 'professor')->get();
+        $names = array();
+        foreach($professors as $professor){
+            $professorId = $professor['id'];
+            $professorUsername = $professor['username'];
+            $names[$professorId] = $professorUsername;
+        }
+        return view('captainsRoom.addBook', compact('professors', 'names'));
 	}
 
 	/**
@@ -41,6 +52,9 @@ class BooksController extends Controller {
 	 */
 	public function store(adminAddBookRequest $request)
 	{
+
+
+
         if(Input::hasFile('thumbnail')){
             $file = Input::file('thumbnail');
             $extentsion = $file->guessExtension();
@@ -56,7 +70,7 @@ class BooksController extends Controller {
             $book->description = $request['description'];
             $book->category = $request['category'];
             $book->class = $request['class'];
-            $book->professor = $request['professor'];
+            $book->professor_id = $request['professor_id'];
             $book->onHand = $request['onHand'];
             $book->thumbnail = $file->getRealPath().$filename;
             $book->save();
@@ -72,7 +86,6 @@ class BooksController extends Controller {
 
         //dd($request);
 	}
-
 	/**
 	 * Display the specified resource.
 	 *
@@ -82,6 +95,17 @@ class BooksController extends Controller {
 	public function show($id)
 	{
 		//
+        $book = book::find($id);
+        $myComments = new CommentsController();
+        $comments = $myComments->commentsByBookId($id);
+        if(Auth::User()){
+        $userId = Auth::User()->id;
+        }
+        else{
+            $userId = 0;
+        }
+
+        return view('profile.bookView', compact('book', 'comments', 'userId'));
 	}
 
 	/**
@@ -106,6 +130,17 @@ class BooksController extends Controller {
 		//
 	}
 
+    public function createComment(){
+        $values = Input::all();
+        $userId = $values['user'];
+        $bookId = $values['book'];
+        $content = $values['comment'];
+        $commentController = new CommentsController();
+        $commentController->store($bookId, $content, $userId);
+
+        return Redirect::back();
+    }
+
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -129,7 +164,7 @@ class BooksController extends Controller {
 
     public function showAllRequests(){
         $thisprofessor = Auth::user();
-        $bookRequests = bookrequest::all()->where('professor', $thisprofessor['username']);
+        $bookRequests = bookrequest::all()->where('professor_id', $thisprofessor['id']);
 
         return view('professor.allBookRequests', compact('bookRequests'));
     }

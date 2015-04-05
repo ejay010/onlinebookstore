@@ -20,9 +20,19 @@
     <a href="/professorPage">Dashboard</a>
 </li>
 <li>
-    <a href="#">Book Requests</a>
+    <a href="professorPage/allbookRequests">Book Requests</a>
 </li>
 @endsection
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
 @section('content')
 {!! Form::open() !!}
@@ -51,7 +61,7 @@
 {!! Form::text('class', null) !!}
 </div>
 
-{!! Form::hidden('professor', $professor['username']) !!}
+{!! Form::hidden('professor_id', $professor['id']) !!}
 {!! Form::submit() !!}
 {!! Form::close() !!}
 @endsection

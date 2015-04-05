@@ -39,7 +39,7 @@ class adminAddBookRequest extends Request {
             'description' => 'required',
             'category' => 'required',
             'class' => 'required',
-            'professor' => 'required',
+            'professor_id' => 'required',
             'onHand' => 'required'
         ];
 	}

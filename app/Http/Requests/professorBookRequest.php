@@ -37,7 +37,7 @@ class professorBookRequest extends Request {
             'author' => 'required',
             'class' => 'required',
             'edition' => 'required|min:1',
-            'professor' => 'required'
+            'professor_id' => 'required'
 		];
 	}
 

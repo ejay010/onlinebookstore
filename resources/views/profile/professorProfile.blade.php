@@ -12,7 +12,7 @@
     <a href="/professorPage">Dashboard</a>
 </li>
 <li>
-    <a href="#">Book Requests</a>
+    <a href="professorPage/allbookRequests">Book Requests</a>
 </li>
 @endsection
 

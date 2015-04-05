@@ -25,7 +25,7 @@
 {{ $bookrequest['class'] }}
 <br>
 {!! Form::label('Professor: ') !!}
-{{ $bookrequest['professor'] }}
+{{ App\User::find($bookrequest['professor_id'])->username }}
 <br>
 {!! Form::label('Approved: ') !!}
 {!! Form::select('approved', ['y' => 'yes', 'n' => 'No'], "$bookrequest[approved]") !!}
