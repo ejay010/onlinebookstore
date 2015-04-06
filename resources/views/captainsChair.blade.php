@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
-    <title>Captain's Chair | Admin Login</title>
+    <meta charset="UTF-8" />
+    <title>
+        Captain's Chair Login
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/captainsChairlogin.css" />
 </head>
 <body>
-<p>Login or suffer the penalty</p>
+
 <br>
 {!! Form::open()!!}
+<h1>Welcome Captain</h1>
+<div class="inset">
 {!! Form::label('email', 'Email') !!}
 {!! Form::text('email', null) !!}
 <br>
 {!! Form::label('password', 'Password') !!}
 {!! Form::password('password', null) !!}
 <br>
+</div>
 {!! Form::submit() !!}
 {!! Form::close() !!}
-<hr/>
-<img src="http://www.primagames.com/media/images/news/assassins_creed_4_black_flag_big.jpg" width="1000" height="600">
-</body>
-</html>
