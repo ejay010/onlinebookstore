@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\User;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Request;
@@ -51,5 +52,16 @@ class loginController extends Controller {
     public function logout(){
         Auth::logout();
         return redirect('/');
+    }
+
+    public function postProfessorRegister(){
+        $input = Input::all();
+        $password = bcrypt($input['password']);
+        try{
+            DB::table('users')->insert(['username' => $input['name'], 'email' => $input['email'], 'password' => $password, 'type' => 'professor']);
+        }catch (\PDOException $e){
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+        return redirect('professorPage');
     }
 }
