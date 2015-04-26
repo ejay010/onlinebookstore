@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/','PagesController@index');
 Route::get('/about', 'PagesController@about');
-Route::get('/logout', 'LoginController@logout');
+Route::get('/logout', 'loginController@logout');
 Route::get('/search', 'PagesController@searchResults');
 Route::get('/searchCategory', 'PagesController@searchCategory');
 
