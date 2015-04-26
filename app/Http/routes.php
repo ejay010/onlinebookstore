@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Input;
 
 
 Route::get('/','PagesController@index');
+Route::get('/home', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/logout', 'loginController@logout');
 Route::get('/search', 'PagesController@searchResults');
@@ -25,7 +26,7 @@ Route::get('/searchCategory', 'PagesController@searchCategory');
 
 //Student routes
 Route::post('registerStudent', 'Auth\AuthController@postRegisterStudent');
-Route::post('login', 'Auth\AuthController@postlogin');
+Route::post('/login', 'loginController@login');
 Route::get('/login', 'Auth\AuthController@getlogin');
 Route::get('/register', 'Auth\AuthController@getStudentRegister');
 Route::get('/viewCart', 'PagesController@viewCart');
