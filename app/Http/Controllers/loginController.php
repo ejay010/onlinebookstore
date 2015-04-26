@@ -18,6 +18,7 @@ class loginController extends Controller {
 
 	//
 
+
     public function register(RegisterStudentRequest $request)
     {
         $input = Request::all();
