@@ -9,8 +9,6 @@
         <div class="col-md-3 well">
             <p class="lead">{{ Auth::user()->username }}</p>
             <div class="list-group">
-                <a href="#" class="list-group-item">Rate Professors</a>
-                <a href="#" class="list-group-item">Rate Classes</a>
                 <div class="list-group">
                     <h5>Search for</h5>
                 @foreach($booksCategory as $Category)
