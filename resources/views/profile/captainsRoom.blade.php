@@ -1,17 +1,29 @@
-<!DOCTYPE html>
-    <html>
-<head>
-    <title>Tortuga - Captains Cabin</title>
-</head>
-<body style="background-image: http://www.primagames.com/media/images/news/assassins_creed_4_black_flag_big2.jpg">
-
-
-<h2><a href="logout">Logout</a></h2>
-<br>
-<h2><a href="captainsRoom/addBook">Add a Book</a></h2>
-<br>
-<h2><a href="captainsRoom/bookRequests">All book Requests</a></h2>
-<hr/>
-<img src="http://www.primagames.com/media/images/news/assassins_creed_4_black_flag_big2.jpg" width="1000" height="600">
-</body>
-    </html>
+@extends('master')
+@section('title')
+Captains Room - Admin Dashboard
+@endsection
+@section('links')
+<li>
+    @if(Auth::user())
+    <a href="/logout">
+        <span class="glyphicon glyphicon-log-out"></span> Log Out</a>
+    @else
+    <a href="/login">Log In</a>
+    @endif
+</li>
+<li>
+    <a href="/captainsRoom/addBook">Add a Book</a>
+</li>
+<li>
+    <a href="/captainsRoom/bookRequests">All book Requests</a>
+</li>
+<li>
+    <a href="/captainsRoom">Dashboard</a>
+</li>
+<li>
+    <a href="/captainsRoom/allBooks">All Books</a>
+</li>
+<li>
+    <a href="/captainsRoom/records">All Transactions</a>
+</li>
+@endsection

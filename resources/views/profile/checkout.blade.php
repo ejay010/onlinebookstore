@@ -8,7 +8,7 @@
 @section('content')
 <nav class="navbar">
     <div class="container">
-        <a class="navbar-brand" href="#">Your online store</a>
+        <a class="navbar-brand" href="#">Tortuga Online</a>
         <div class="navbar-right">
             <div class="container minicart"></div>
         </div>
@@ -17,57 +17,67 @@
 
 <div class="container-fluid breadcrumbBox text-center">
     <ol class="breadcrumb">
-        <li><a href="#">Review Order</a></li>
-        <li class="active"><a href="#">Payment</a></li>
+        <li><a href="/viewCart">Review Order</a></li>
+        <li><a href="/shipping">Review Shipping</a> </li>
+        <li class="active"><a href="/checkOut">Payment</a></li>
     </ol>
 </div>
 
 <div class="container text-center">
 
-    <div class="col-md-5 col-sm-12">
-        <div class="bigcart"></div>
+    <div class="col-md-6 col-sm-12 well">
         <h1>Your shopping cart</h1>
-    </div>
-
-    <div class="col-md-7 col-sm-12 text-left">
         <ul>
-            <li class="row list-inline columnCaptions">
-                <span>QTY</span>
-                <span>ITEM</span>
-                <span>Price</span>
-            </li>
             @foreach($items as $item)
-            <li class="row">
-                <span class="quantity">{{ $item['quantity'] }}</span>
-                <span class="itemName">{{ $item['title'] }}</span>
-                <span id="itemprice" class="price">{{ $item['pprice'] }}</span>
-            </li>
+            <hr/>
+            <h3 class="itemName">{{ $item['quantity'] }} "{{ $item['title'] }}" @ ${{ $item['pprice'] }}</h3>
+            <hr/>
             @endforeach
-            <li class="row totals">
-                <span class="itemName">Total:</span>
-                <span id="total" class="price">${{ $cartTotal }}</span>
-            </li>
         </ul>
+        <h3 class="">Total: ${{ $cartTotal }}</h3>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <h1>Billing Information</h1>
         {!! Form::open(['id' => 'billing-form']) !!}
-        {!! Form::label('number', 'Number on Card:') !!}
-        {!! Form::text(null, null, ['data-stripe' => 'number']) !!}
-        <br/>
-        {!! Form::label('cvc', 'CVC:') !!}
-        {!! Form::text(null, null, ['data-stripe' => 'cvc']) !!}
-        <br/>
-        {!! Form::label('month', 'Month:') !!}
-        {!! Form::selectMonth(null, null, ['data-stripe' => 'exp-month']) !!}
-        <br/>
-        {!! Form::label('year', 'Year:') !!}
-        {!! Form::selectYear(null, date('Y'), date('Y') + 10, null, ['data-stripe' => 'exp-year']) !!}
-        <br/>
-        {!! Form::submit('Buy Now', ['id' => 'buyNowButton']) !!}
+            <div class="form-group">
+        {!! Form::label('email', 'Email:', ['class' => 'pull-left']) !!}
+        {!! Form::email('email', null, ['class' => 'form-control']) !!}
+                </div>
+            <div class="form-group">
+        {!! Form::label('number', 'Number on Card:', ['class' => 'pull-left']) !!}
+        {!! Form::text(null, null, ['data-stripe' => 'number', 'class' => 'form-control']) !!}
+           </div>
+            <div class="form-group">
+        {!! Form::label('cvc', 'CVC:', ['class' => 'pull-left']) !!}
+        {!! Form::text(null, null, ['data-stripe' => 'cvc', 'class' => 'form-control']) !!}
+        </div>
+            <div class="form-group">
+        {!! Form::label('month', 'Month:', ['class' => 'pull-left']) !!}
+        {!! Form::selectMonth(null, null, ['data-stripe' => 'exp-month', 'class' => 'form-control']) !!}
+        </div>
+
+            <div class="form-group">
+        {!! Form::label('year', 'Year:', ['class' => 'pull-left']) !!}
+        {!! Form::selectYear(null, date('Y'), date('Y') + 10, null, ['data-stripe' => 'exp-year', 'class' => 'form-control']) !!}
+        </div>
+        {!! Form::submit('Buy Now', ['id' => 'buyNowButton', 'class' => 'pull-right btn btn-default']) !!}
         <div class="payment-errors"></div>
         {!! Form::close() !!}
+        </div>
     </div>
 
 </div>
 
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <!-- The popover content -->
 
 <div id="popover" style="display: none">

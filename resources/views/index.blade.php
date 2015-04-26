@@ -1,18 +1,33 @@
 @extends('master')
 <!-- Page Content -->
 @section('content')
-<div class="container-fluid">
+<div class="container">
 
     <div class="row">
 
         @if (Auth::user())
-        <div class="col-md-3">
+        <div class="col-md-3 well">
             <p class="lead">{{ Auth::user()->username }}</p>
             <div class="list-group">
-                <a href="#" class="list-group-item">Search for Books</a>
                 <a href="#" class="list-group-item">Rate Professors</a>
                 <a href="#" class="list-group-item">Rate Classes</a>
-                <a href="logout" class="list-group-item">Logout</a>
+                <div class="list-group">
+                    <h5>Search for</h5>
+                @foreach($booksCategory as $Category)
+                <a href="/searchCategory?c={{ $Category['category'] }}" class="list-group-item">{{ $Category['category'] }}</a>
+                @endforeach
+                    </div>
+            </div>
+        </div>
+        @else
+
+        <div class="col-md-3 well">
+            <p class="lead">Welcome!</p>
+            <div class="list-group">
+                <h5>Search for</h5>
+                @foreach($booksCategory as $Category)
+                <a href="/searchCategory?c={{ $Category['category'] }}" class="list-group-item">{{ $Category['category'] }}</a>
+                @endforeach
             </div>
         </div>
         @endif
@@ -48,12 +63,12 @@
                     </div>
                 </div>
             </div>
-
+<div class="well">
             <div class="row">
                 @foreach($books as $book)
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <a href="books/{{ $book->id }}"><img src="/assets/bookImages/{{ $book->thumbnail }}" alt=""></a>
+                        <a href="books/{{ $book->id }}"><img src="/assets/bookImages/{{ $book->thumbnail }}" alt="{{ $book->title }}"></a>
                         <div class="caption">
                             <h4 class="pull-right">${{ $book->pprice }}</h4>
                             <h4><a href="#">{{ $book->title }}</a>
@@ -64,8 +79,8 @@
                 </div>
                 @endforeach
                     <!-- <span class="glyphicon glyphicon-star"></span> -->
-
             </div>
+    </div>
 
         </div>
 

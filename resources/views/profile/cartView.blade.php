@@ -18,42 +18,36 @@
 <div class="container-fluid breadcrumbBox text-center">
     <ol class="breadcrumb">
         <li class="active"><a href="#">Review Order</a></li>
-        <li><a href="#">Payment</a></li>
     </ol>
 </div>
 
 <div class="container text-center">
 
-    <div class="col-md-5 col-sm-12">
-        <div class="bigcart"></div>
-        <h1>Your shopping cart</h1>
-    </div>
-
-    <div class="col-md-7 col-sm-12 text-left">
-        <ul>
-            <li class="row list-inline columnCaptions">
-                <span>QTY</span>
-                <span>ITEM</span>
-                <span>Price</span>
-            </li>
-            {!! Form::open(['url' => '/checkOut']) !!}
+    <div class="col-lg-12 col-md-7 col-sm-12 well">
+        <div>
             @foreach($items as $item)
-            <li class="row">
-                {!! Form::input('text', 'quantity', "$item[quantity]", ['id' => 'quantity', 'class' => 'quantity']) !!}
-                <span class="itemName">{{ $item['title'] }}</span>
-                {!! Form::hidden('id', "$item[id]") !!}
-                <span id="itemprice" class="price">{{ $item['pprice'] }}</span>
-            </li>
-            @endforeach
-            <li class="row totals">
-                <span class="itemName">Total:</span>
-                <span id="total" class="price">${{ $cartTotal }}</span>
-                {!! Form::submit('Confirm Order', ['class' => 'order']) !!}
-            </li>
-            {!! Form::close() !!}
-        </ul>
-    </div>
+        <hr/>
 
+        <h3 class="itemName">"{{ $item['title'] }}", ${{ $item['pprice'] }} * {{ $item['quantity'] }}</h3>
+                <div class="form-group">
+                    <a href="books/{{ $item['id'] }}" class="btn btn-default">Change Quantity</a>
+                    <form action="/removeFromCart" method="post">
+                        {!! Form::token() !!}
+                        <input type="hidden" name="id" value="{{ $item['id'] }}">
+                        <button type="submit" class="btn-danger">Remove</button>
+                    </form>
+                </div>
+        <hr/>
+
+            </div>
+            @endforeach
+
+        <h3 class="">Total: ${{ $cartTotal }}</h3>
+        <div class="pull-right">
+            <a href="/shipping" class="btn btn-default">Confirm</a>
+        </div>
+    </div>
+    </div>
 </div>
 
 <!-- The popover content -->

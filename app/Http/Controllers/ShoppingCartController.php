@@ -62,7 +62,7 @@ class ShoppingCartController extends Controller {
         $item = $values['id'];
         $quantity = $values['quantity'];
         $this->setItemsToCart($item, $quantity);
-        return Redirect::back();
+        return Redirect::back()->with('message', 'Added to Cart');
 	}
 
     public function removeFromCart(){
@@ -71,10 +71,23 @@ class ShoppingCartController extends Controller {
         $this->unsetAnItemFromCart($item);
     }
 
-    public function editItemQuantityInCart(){
+    public function removeDirectly(){
+        $values = Input::all();
+        $item = $values['id'];
+        $this->unsetAnItemFromCart($item);
+        return redirect('/viewCart');
+    }
+
+    public  function editItemQuantityInCart(){
         $values = Input::all();
         $item = $values['id'];
         $newQuantity = $values['quantity'];
+        $this->setItemsToCart($item, $newQuantity);
+    }
+
+    public function editItemQuantityInCartWithValues($id, $quantity){
+        $item = $id;
+        $newQuantity = $quantity;
         $this->setItemsToCart($item, $newQuantity);
     }
 
@@ -92,5 +105,22 @@ class ShoppingCartController extends Controller {
         Session::forget('cart');
         Session::put('cart', $this->myCart);
         $this->myCart = Session::get('cart');
+    }
+
+    public function getDescriptionString(){
+        $theString = "";
+        $theCart = $this->myCart;
+        foreach($theCart as $key => $value){
+            $item = book::find($key);
+            $itemName = $item['title'];
+            $itemQuantity = $value;
+            $subtotal = $item['pprice'] * $value;
+            $theString = $theString." Item: ".$itemName." Quantity: ".$itemQuantity." SubTotal: ".$subtotal.",";
+        }
+        return $theString;
+    }
+
+    public function returnCart(){
+        return $this->myCart;
     }
 }

@@ -64,7 +64,7 @@ $(function() {
 
             if(response.error){
                 this.form.find('.payment-errors').show().text(response.error.message);
-                return this.submitButton.val(this.submitButtonValue).prop('disable', false).val(this.submitButtonValue);
+                return this.submitButton.val(this.submitButtonValue).prop('disabled', false).val(this.submitButtonValue);
             }
 
             $('<input>',{

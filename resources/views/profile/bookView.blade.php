@@ -30,10 +30,13 @@
                     <p class="description">{{ $book['description'] }}</p>
                     <h2 class="text-right">${{ $book['pprice'] }}</h2>
                     {!! Form::open(['url' => '/addToCart']) !!}
+                    <div class="form-group">
                     {!! Form::label('quantity', 'Quantity: ') !!}
-                    {!! Form::select('quantity', ['1' => '1', '2' => '2', '3' => '3'], 1) !!}
+                    {!! Form::select('quantity', ['1' => '1', '2' => '2', '3' => '3'], 1, ['class' => 'form-control']) !!}
+                    </div>
+
                     {!! Form::hidden('id', "$book[id]") !!}
-                    {!! Form::submit('Add to Cart') !!}
+                    {!! Form::submit('Add to Cart',  ['class' => 'btn btn-default']) !!}
                     <!--<button id="addToCart" class="btn btn-primary btn-lg ">Add to Cart</button>
                     <button type="submit" id="buyNow" class="btn btn-primary btn-lg">Buy Now</button>-->
                     {!! Form::close() !!}
@@ -58,11 +61,13 @@
 
                     @if(Auth::user())
                     {!! Form::open() !!}
+                    <div class="form-group">
                     {!! Form::label('comment', 'Make A Comment: ') !!}
-                    {!! Form::textarea('comment', null) !!}
+                    {!! Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Comment....']) !!}
+                    </div>
                     {!! Form::hidden('user', "$userId") !!}
                     {!! Form::hidden('book', "$book[id]") !!}
-                    {!! Form::submit('Post') !!}
+                    {!! Form::submit('Post', ['class' => 'btn btn-default']) !!}
                     {!! Form::close() !!}
                     @else
                     <h4>Please login to make a comment</h4>

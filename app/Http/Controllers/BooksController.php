@@ -52,9 +52,6 @@ class BooksController extends Controller {
 	 */
 	public function store(adminAddBookRequest $request)
 	{
-
-
-
         if(Input::hasFile('thumbnail')){
             $file = Input::file('thumbnail');
             $extentsion = $file->guessExtension();
@@ -72,7 +69,7 @@ class BooksController extends Controller {
             $book->class = $request['class'];
             $book->professor_id = $request['professor_id'];
             $book->onHand = $request['onHand'];
-            $book->thumbnail = $file->getRealPath().$filename;
+            $book->thumbnail = $filename;
             $book->save();
 
             //$createArray = array_add($request->all(), 'thumbnail', $file->getRealPath());
@@ -128,6 +125,7 @@ class BooksController extends Controller {
 	public function update($id)
 	{
 		//
+
 	}
 
     public function createComment(){
@@ -150,6 +148,8 @@ class BooksController extends Controller {
 	public function destroy($id)
 	{
 		//
+        book::destroy($id);
+        return redirect()->back();
 	}
 
     public function request(){
@@ -165,13 +165,17 @@ class BooksController extends Controller {
     public function showAllRequests(){
         $thisprofessor = Auth::user();
         $bookRequests = bookrequest::all()->where('professor_id', $thisprofessor['id']);
-
         return view('professor.allBookRequests', compact('bookRequests'));
     }
 
     public function captainsOrders(){
         $bookRequests = bookrequest::all();
         return view('captainsRoom.allbookrequests', compact('bookRequests'));
+    }
+
+    public function getAllCatagories(){
+        $bookCatagory = book::all(['category']);
+        return $bookCatagory;
     }
 
 }

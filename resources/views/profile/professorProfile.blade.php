@@ -12,19 +12,17 @@
     <a href="/professorPage">Dashboard</a>
 </li>
 <li>
-    <a href="professorPage/allbookRequests">Book Requests</a>
+    <a href="/professorPage/allbookRequests">Book Requests</a>
 </li>
 @endsection
 
 @section('content')
 <h1>{{$user->username}}</h1>
-<img src="http://www.dodaj.rs/f/2Q/fK/1DvX60rx/geniusmixtrap.jpg">
-<br>
-Just cause she bad..
-<br>
-<a class="btn" href="professorPage/requestBook">
+<div class="list-group">
+<a class="btn list-group-item" href="professorPage/requestBook">
     <span class="glyphicon glyphicon-book"></span> Request A Book</a>
 <br>
-<a class="btn" href="logout">
+<a class="btn list-group-item" href="logout">
     <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+</div>
 @endsection
