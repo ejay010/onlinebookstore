@@ -25,11 +25,12 @@ class loginController extends Controller {
         $user->username = $input['username'];
         $user->email = $input['email'];
         $user->password = Hash::make($input['password']);
+        $user->type = 'student';
         if ($user->save())
         {
-            return view('profile.student', compact('user'));
+            return redirect('/');
         } else {
-            return 'error';
+            return redirect()->back()->withInput();
         }
 
     }
