@@ -70,7 +70,7 @@ Route::get('captainsRoom/allBooks', function(){
 
 //Professor routes
 Route::get('professorRegister', 'PagesController@getProfessorRegister');
-Route::post('registerProfessor', 'Auth\AuthController@postProfessorRegister');
+Route::post('registerProfessor', 'loginController@postProfessorRegister');
 Route::get('professorLogin', 'PagesController@getProfessorLogin');
 Route::post('professorLogin', 'PagesController@postProfessorsLogin');
 Route::get('professorPage', 'PagesController@ProfessorsRoom');
