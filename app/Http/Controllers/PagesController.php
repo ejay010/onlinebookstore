@@ -24,7 +24,7 @@ class PagesController extends Controller {
 
     public function about()
     {
-        return 'about';
+        return view('about');
     }
 
     public function loginForm()
