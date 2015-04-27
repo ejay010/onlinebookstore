@@ -20,7 +20,7 @@
     <a href="/professorPage">Dashboard</a>
 </li>
 <li>
-    <a href="professorPage/allbookRequests">Book Requests</a>
+    <a href="/professorPage/allbookRequests">Book Requests</a>
 </li>
 @endsection
 @if (count($errors) > 0)
