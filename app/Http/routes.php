@@ -31,14 +31,11 @@ Route::get('/login', 'Auth\AuthController@getlogin');
 Route::get('/register', 'Auth\AuthController@getRegister');
 Route::get('/viewCart', 'PagesController@viewCart');
 Route::get('books/{id}', 'BooksController@show');
-
 Route::post('/removeFromCart', 'ShoppingCartController@removeDirectly');
 Route::post('books/{id}', 'BooksController@createComment');
 Route::post('/addToCart', 'ShoppingCartController@addToCart');
-
 Route::get('/checkOut', 'PagesController@checkOutCart');
 Route::post('/checkOut', 'CheckOutController@checkOut');
-
 Route::post('/shipping', 'CheckOutController@saveShipping');
 Route::get('/shipping', 'CheckOutController@getShipping');
 

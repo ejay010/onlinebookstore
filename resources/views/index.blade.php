@@ -1,115 +1,99 @@
-@extends('master')
-<!-- Page Content -->
-@section('content')
-<div class="container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0">
+<head>
+<title>Book Tortuga BookStore</title>
 
-    <div class="row">
+<link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="templatemo_container">
+	<div id="templatemo_menu">
+    	<ul>
+            @yield('links' , View::make('navs.navdefault'))
+    	</ul>
+    </div> <!-- end of menu -->
 
-        @if (Auth::user())
-        <div class="col-md-3 well">
-            <p class="lead">{{ Auth::user()->username }}</p>
-            <div class="list-group">
-                <div class="list-group">
-                    <h5>Search for</h5>
-                @foreach($booksCategory as $Category)
-                <a href="/searchCategory?c={{ $Category['category'] }}" class="list-group-item">{{ $Category['category'] }}</a>
-                @endforeach
-                    </div>
-            </div>
-        </div>
-        @else
+  <div id="templatemo_header"><img src="images/newcompass.jpg" alt="" width="960" height="287" />
 
-        <div class="col-md-3 well">
-            <p class="lead">Welcome!</p>
-            <div class="list-group">
-                <h5>Search for</h5>
-                @foreach($booksCategory as $Category)
-                <a href="/searchCategory?c={{ $Category['category'] }}" class="list-group-item">{{ $Category['category'] }}</a>
-                @endforeach
-            </div>
-        </div>
-        @endif
-
-        <div class="col-md-9">
-
-            <div class="row carousel-holder">
-
-                <div class="col-md-12">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="slide-image" src="http://greatresultsteambuilding.net/wp-content/uploads/2014/10/books-cds-products-800-x-300.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://thewellarmedwoman.com/image/cache/data/categories/books-and-dvds-800x300.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://mmageephotography.com/wp-content/uploads/2010/09/books-2-800x300.jpg" alt="">
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-<div class="well">
-            <div class="row">
-                @foreach($books as $book)
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <a href="books/{{ $book->id }}"><img src="/assets/bookImages/{{ $book->thumbnail }}" alt="{{ $book->title }}"></a>
-                        <div class="caption">
-                            <h4 class="pull-right">${{ $book->pprice }}</h4>
-                            <h4><a href="#">{{ $book->title }}</a>
-                            </h4>
-                            <p>{{ $book->description }}</p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                    <!-- <span class="glyphicon glyphicon-star"></span> -->
-            </div>
-    </div>
-
-        </div>
 
     </div>
+  <!-- end of header -->
 
-</div>
-<!-- /.container -->
-@endsection
+    <div id="templatemo_content">
 
-@section('footer')
-<div class="container">
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; Tortuga, Bucky's Bookstore 2014</p>
-            </div>
+        <div id="templatemo_content_left">
+        	<div class="templatemo_content_left_section">
+            	<h1 align="left">Categories</h1>
+                <div align="left">
+                  <ul>@foreach($booksCategory as $Category)
+                      <li><a href="/searchCategory?c={{ $Category['category'] }}" class="list-group-item">{{ $Category['category'] }}</a></li>
+                      @endforeach
+                  </ul>
+                </div>
+        	</div>
         </div>
-    </footer>
+        <div align="left"><!-- end of content left -->
 
-</div>
-<!-- /.container -->
-@endsection
+        </div>
+        <div id="templatemo_content_right">
+            @foreach($books as $book)
 
-@section('scripts')
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
+        	<div class="templatemo_product_box">
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-@endsection
+            	<h1>{{ $book->title }}<span></span></h1>
+   	      <img src="/assets/bookImages/{{ $book->thumbnail }}" alt="{{ $book->title }}" width="103" height="141" />
+                <div class="product_info">
+               	  <p>{{ $book->description }}</p>
+                  <h3>${{ $book->pprice }}</h3>
+                    <div class="buy_now_button"><a href="books/{{ $book->id }}">Detail</a></div>
+              </div>
+                <div class="cleaner">&nbsp;</div>
+            </div>
+
+            @endforeach
+
+
+
+            <a href="subpage.html"></a>
+        </div> <!-- end of content right -->
+
+    	<div class="cleaner_with_height">&nbsp;</div>
+    </div> <!-- end of content -->
+
+    <div id="templatemo_footer"><br />
+    </div>
+    <!-- end of footer -->
+<!--  Free CSS Template www.templatemo.com -->
+</div> <!-- end of container -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

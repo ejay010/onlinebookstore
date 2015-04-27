@@ -51,6 +51,7 @@
 									Login
 								</button>
                                 <a href="/register">Register</a>
+                                <br/>
 								<a href="/password/email">Forgot Your Password?</a>
 							</div>
 						</div>

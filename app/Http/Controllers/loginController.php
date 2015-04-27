@@ -58,7 +58,7 @@ class loginController extends Controller {
     }
 
     public function postProfessorRegister(){
-        $input = Inpu::all();
+        $input = Input::all();
         $password = bcrypt($input['password']);
         try{
             DB::table('users')->insert(['username' => $input['name'], 'email' => $input['email'], 'password' => $password, 'type' => 'professor']);

@@ -13,12 +13,12 @@
 {!! Form::open()!!}
 <h1>Welcome Captain</h1>
 <div class="inset">
-{!! Form::label('email', 'Email') !!}
-{!! Form::text('email', null) !!}
-<br>
-{!! Form::label('password', 'Password') !!}
-{!! Form::password('password', null) !!}
-<br>
+    {!! Form::label('email', 'Email') !!}
+    {!! Form::text('email', null) !!}
+    <br>
+    {!! Form::label('password', 'Password') !!}
+    {!! Form::password('password', null) !!}
+    <br>
 </div>
 {!! Form::submit() !!}
 {!! Form::close() !!}

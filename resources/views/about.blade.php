@@ -1,5 +1,18 @@
-@extends('master')
-<div class="container">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0">
+<html>
+<head>
+<title>Book Tortuga BookStore</title>
+
+<link href="css/Aboutstyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="templatemo_container">
+	<div id="templatemo_menu">
+    	<ul>
+            @yield('links', View::make('navs.navdefault'))
+    	</ul>
+    </div> <!-- end of menu -->
+
   <div id="templatemo_header"><img src="images/newcompass.jpg" alt="" width="960" height="287" />
 
 
@@ -28,4 +41,5 @@ PO BOX 456<br>
 <br>
 
 </div> <!-- end of container -->
-</div>
+</body>
+</html>
