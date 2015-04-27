@@ -29,5 +29,5 @@
 <h1>{{ $bookRequest['title'] }} </h1>
 <br>
 @endforeach
-<img src="http://cdn.wall-pix.net/albums/military/00027982.jpg">
+
 @endsection
