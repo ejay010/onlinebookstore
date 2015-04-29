@@ -14,7 +14,6 @@
 
     <!-- Bootstrap Core CSS -->
     @yield('stylesheets', '
-
     <!-- Custom CSS -->
     <!--<link href="css/shop-homepage.css" rel="stylesheet"> -->
     <link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
@@ -42,9 +41,9 @@
             @yield('links' , View::make('navs.navdefault'))
         </ul>
     </div>
-
+    @yield('logo', '
     <div id="templatemo_header"><img src="images/newcompass.jpg" alt="" width="960" height="287" /></div>
-
+')
     <!--@yield('title', 'Tortuga, Bucky\'s Book\'s')-->
 
     @yield('content')

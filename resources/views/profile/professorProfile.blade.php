@@ -1,4 +1,7 @@
-@extends('master')
+@extends('master2')
+@section('stylesheets')
+<link href="css/professorstyle.css" rel="stylesheet" type="text/css" />
+@endsection
 @section('links')
 <li>
     @if(Auth::user())
@@ -17,12 +20,15 @@
 @endsection
 
 @section('content')
-<h1>{{$user->username}}</h1>
-<div class="list-group">
-<a class="btn list-group-item" href="professorPage/requestBook">
-    <span class="glyphicon glyphicon-book"></span> Request A Book</a>
-<br>
-<a class="btn list-group-item" href="logout">
-    <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+<div id="templatemo_content">
+
+    <h1 style="color: #050504"> Welcome Professor {{ $user->username }}!</h1>
+    <br>
+
+    <h2><span style="color: #010000">To make a book Request <a href="/professorPage/requestBook">Click Here</a></span></h2>
+    <br>
+    <br>
+    <br>
+    <a href="/logout" class="Log">Log Out!</a>
 </div>
 @endsection

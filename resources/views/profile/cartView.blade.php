@@ -1,65 +1,67 @@
-@extends('master')
+@extends('master2')
     @section('stylesheets')
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/shopcart.css">
+<link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
     @endsection
 
 @section('content')
-<nav class="navbar">
-    <div class="container">
-        <a class="navbar-brand" href="#">Your online store</a>
-        <div class="navbar-right">
-            <div class="container minicart"></div>
-        </div>
-    </div>
-</nav>
 
-<div class="container-fluid breadcrumbBox text-center">
-    <ol class="breadcrumb">
-        <li class="active"><a href="#">Review Order</a></li>
-    </ol>
-</div>
 
-<div class="container text-center">
-
-    <div class="col-lg-12 col-md-7 col-sm-12 well">
-        <div>
+<div id="w">
+    <header id="title">
+        <h1>Your Shopping Cart</h1>
+    </header>
+    <div id="page">
+        <table id="cart">
+            <thead>
+            <tr>
+                <th class="first">Title</th>
+                <th class="second">Qty</th>
+                <th class="third">Product</th>
+                <th class="fourth">Line Total</th>
+                <th class="fifth">Remove</th>
+            </tr>
+            </thead>
+            <tbody>
             @foreach($items as $item)
-        <hr/>
+            <tr class="productitm">
+                <td>{{ $item['title'] }}</td>
+                <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
+                <td>{{ $item['quantity'] }}</td>
+                <td>{{ $item['pprice'] }}</td>
 
-        <h3 class="itemName">"{{ $item['title'] }}", ${{ $item['pprice'] }} * {{ $item['quantity'] }}</h3>
-                <div class="form-group">
-                    <a href="books/{{ $item['id'] }}" class="btn btn-default">Change Quantity</a>
-                    <form action="/removeFromCart" method="post">
-                        {!! Form::token() !!}
-                        <input type="hidden" name="id" value="{{ $item['id'] }}">
-                        <button type="submit" class="btn-danger">Remove</button>
-                    </form>
-                </div>
-        <hr/>
-
-            </div>
+                <form action="/removeFromCart" method="post">
+                    {!! Form::token() !!}
+                    <input type="hidden" name="id" value="{{ $item['id'] }}">
+                    <a href="" onclick="submit" ><td><span class="remove"><img src="images/trash.png" alt="X"></span></td></a>
+                </form>
+            </tr>
             @endforeach
 
-        <h3 class="">Total: ${{ $cartTotal }}</h3>
-        <div class="pull-right">
-            <a href="/shipping" class="btn btn-default">Confirm</a>
-        </div>
-    </div>
+            <tr class="extracosts">
+                <td class="light">Shipping &amp; Tax</td>
+                <td colspan="2" class="light"></td>
+                <td></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="totalprice">
+                <td class="light">Total: ${{ $cartTotal }}</td>
+                <td colspan="2">&nbsp;</td>
+                <td colspan="2"><span class="thick"></span></td>
+            </tr>
+
+
+            <tr class="checkoutrow">
+                <td colspan="5" class="checkout"><a href="/shipping" ><button id="submitbtn">Checkout Now!</button></a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-
-<!-- The popover content -->
-
-<div id="popover" style="display: none">
-    <a href="#" id="edit"><span class="glyphicon glyphicon-pencil"></span></a>
-    <a href="#" id="remove"><span class="glyphicon glyphicon-remove"></span></a>
-</div>
 @endsection
-<!-- JavaScript includes -->
-@section('scripts')
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/customjs.js"></script>
-@endsection
+
+
+
+
+
+

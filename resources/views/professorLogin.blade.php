@@ -1,61 +1,47 @@
-@extends('master')
+@extends('master2')
+
+@section('stylesheets')
+<link rel="stylesheet" type="text/css" href="../css/profesbook.css" />
+<!-- Custom CSS -->
+<link href="../css/templatemo_style2.css" rel="stylesheet" type="text/css" />
+@endsection
 
 @section('content')
-<div class="col-md-6 col-md-offset-3">
-    <div class="panel panel-default">
-        <div id="professor">
-            <div class="panel-heading">Professor Login</div>
-            <div class="panel-body">
-                @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-
-                <form class="form-horizontal" role="form" method="POST" action="professorLogin">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">E-Mail Address</label>
-                        <div class="col-md-6">
-                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Password</label>
-                        <div class="col-md-6">
-                            <input type="password" class="form-control" name="password">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="remember"> Remember Me
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-                                Login
-                            </button>
-
-                            <a href="professorRegister">Register</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </div>
+@endif
+
+
+<form action="professorLogin" method="post" class="basic-grey">
+    {!! Form::token() !!}
+    <h1>Professor Login
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+    <label>
+        <span>Email:</span>
+        <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+    </label>
+
+    <label>
+        <span>Password:</span>
+        <input type="password" class="form-control" name="password">
+    </label>
+
+    <label>
+        <span>&nbsp;</span>
+        <input type="submit" class="button" value="Login" />
+    </label>
+
+    <label>
+        <span>&nbsp;</span>
+        <a href="professorRegister">Register</a>
+    </label>
+</form>
 @endsection

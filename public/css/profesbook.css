@@ -2,9 +2,9 @@
 /* CSS Document */
 /* Basic Grey */
 body {
-	background: #DCDDDF url(../images/liteblue.jpg);
-}
-.basic-grey {
+    background: #DCDDDF url(../images/liteblue.jpg);
+    }
+    .basic-grey {
     margin-left:auto;
     margin-right:auto;
     max-width: 500px;
@@ -14,32 +14,32 @@ body {
     color: #888;
     text-shadow: 1px 1px 1px #FFF;
     border:1px solid #E4E4E4;
-}
-.basic-grey h1 {
+    }
+    .basic-grey h1 {
     font-size: 25px;
     padding: 0px 0px 10px 40px;
     display: block;
     border-bottom:1px solid #E4E4E4;
     margin: -10px -15px 30px -10px;;
     color: #888;
-}
-.basic-grey h1>span {
+    }
+    .basic-grey h1>span {
     display: block;
     font-size: 11px;
-}
-.basic-grey label {
+    }
+    .basic-grey label {
     display: block;
     margin: 0px;
-}
-.basic-grey label>span {
+    }
+    .basic-grey label>span {
     float: left;
     width: 20%;
     text-align: right;
     padding-right: 10px;
     margin-top: 10px;
     color: #888;
-}
-.basic-grey input[type="text"], .basic-grey input[type="email"], .basic-grey textarea, .basic-grey select {
+    }
+    .basic-grey input[type="text"], .basic-grey input[type="email"], .basic-grey textarea, .basic-grey select {
     border: 1px solid #DADADA;
     color: #888;
     height: 30px;
@@ -54,14 +54,14 @@ body {
     box-shadow: inset 0px 1px 4px #ECECEC;
     -moz-box-shadow: inset 0px 1px 4px #ECECEC;
     -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
-}
-.basic-grey textarea{
+    }
+    .basic-grey textarea{
     padding: 5px 3px 3px 5px;
-}
-.basic-grey select {
-    background: #FFF url(images/down-arrow.png) no-repeat right;
+    }
+    .basic-grey select {
+    background: #FFF url(../images/down-arrow.png) no-repeat right;
     appearance:none;
-    -webkit-appearance:none; 
+    -webkit-appearance:none;
     -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
@@ -86,10 +86,10 @@ body {
     background: #CF7A7A
 }
 #templatemo_container{
-	width: 960px;
-	margin: 0 auto;
-	padding: 0 10px;
-	background: url(../images/white.png)
-	background-repeat: repeat-y;
+    width: 960px;
+    margin: 0 auto;
+    padding: 0 10px;
+    background: url(../images/white.png)
+    background-repeat: repeat-y;
 }
 
