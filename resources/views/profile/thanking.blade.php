@@ -1,8 +1,6 @@
-@extends('master')
+@extends('master2')
 @section('stylesheets')
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')

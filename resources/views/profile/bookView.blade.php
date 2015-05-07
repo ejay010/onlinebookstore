@@ -1,15 +1,19 @@
-@extends('master')
+@extends('master2')
 
     @section('stylesheets')
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/templatemo_style.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/shop-item.css" rel="stylesheet">
+    <!--<link href="../css/shop-item.css" rel="stylesheet">-->
     <style>
         p.description{
             word-wrap: break-word;
         }
     </style>
     @endsection
+@section('logo')
+<div id="templatemo_header"><img src="../images/newcompass.jpg" alt="" width="960" height="287" /></div>
+@endsection
+
 
 @section('content')
 <div class="container">
@@ -20,7 +24,7 @@
         <div class="container">
             <div class="menu row">
                 <div class="product col-lg-6">
-                    <img class="img-responsive" src="/assets/bookImages/{{ $book['thumbnail'] }}">
+                    <img class="img-responsive" src="/assets/bookImages/{{ $book['thumbnail'] }}" style="width: 500px; height: 500px;">
                     </div>
                 <div class="col-lg-6">
                     <hr>

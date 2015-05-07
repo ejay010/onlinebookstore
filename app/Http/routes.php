@@ -25,7 +25,7 @@ Route::get('/search', 'PagesController@searchResults');
 Route::get('/searchCategory', 'PagesController@searchCategory');
 
 //Student routes
-Route::post('registerStudent', 'Auth\AuthController@postRegisterStudent');
+Route::post('registerStudent', 'loginController@Register');
 Route::post('/login', 'loginController@login');
 Route::get('/login', 'Auth\AuthController@getlogin');
 Route::get('/register', 'Auth\AuthController@getRegister');

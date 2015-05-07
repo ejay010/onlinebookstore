@@ -1,20 +1,21 @@
-@extends('master')
+@extends('master2')
 @section('stylesheets')
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="../css/custom.css"/>
+<link href="../css/templatemo_style.css" rel="stylesheet" type="text/css" />
+<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>-->
+<!--<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>-->
+<!--<link rel="stylesheet" type="text/css" href="../css/custom.css"/>-->
 @endsection
 
 @section('content')
-<nav class="navbar">
+<!--<nav class="navbar">
     <div class="container">
         <a class="navbar-brand" href="#">Tortuga Online</a>
         <div class="navbar-right">
             <div class="container minicart"></div>
         </div>
     </div>
-</nav>
-
+</nav>-->
+<!--
 <div class="container-fluid breadcrumbBox text-center">
     <ol class="breadcrumb">
         <li><a href="/viewCart">Review Order</a></li>
@@ -22,7 +23,7 @@
         <li class="active"><a href="/checkOut">Payment</a></li>
     </ol>
 </div>
-
+-->
 <div class="container text-center">
 
     <div class="col-md-6 col-sm-12 well">

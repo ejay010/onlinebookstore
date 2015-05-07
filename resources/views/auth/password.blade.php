@@ -1,11 +1,11 @@
-@extends('master')
+@extends('master2')
 
 @section('content')
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
+				<div class="panel-heading"><h1>Reset Password</h1></div>
 				<div class="panel-body">
 					@if (session('status'))
 						<div class="alert alert-success">
@@ -28,7 +28,7 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
+							<label class="col-md-4 control-label"><h2>E-Mail Address</h2></label>
 							<div class="col-md-6">
 								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
 							</div>

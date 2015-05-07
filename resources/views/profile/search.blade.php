@@ -1,4 +1,4 @@
-@extends('master')
+@extends('master2')
 @section('content')
 <!-- Page Content -->
 <div class="container">
@@ -18,7 +18,7 @@
         @foreach($books as $book)
         <div class="col-md-3 portfolio-item">
             <a href="books/{{ $book->id }}">
-                <img class="img-responsive" src="/assets/bookImages/{{ $book->thumbnail }}" alt="{{ $book->title }}">
+                <img class="img-responsive" src="/assets/bookImages/{{ $book->thumbnail }}" alt="{{ $book->title }}" style="width: 500px; height: 500px;">
             </a>
         </div>
         @endforeach

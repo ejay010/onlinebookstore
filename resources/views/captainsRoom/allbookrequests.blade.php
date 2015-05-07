@@ -1,9 +1,15 @@
-@extends('master')
+@extends('master2')
 @section('stylesheets')
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/templatemo_style.css" rel="stylesheet">
 <!-- Custom CSS -->
-<link href="../css/shop-homepage.css" rel="stylesheet">
+
 @endsection
+
+@section('logo')
+<div id="templatemo_header"><img src="../images/newcompass.jpg" alt="" width="960" height="287" /></div>
+@endsection
+
+
 
 @section('title')
 Captains Room - Admin Dashboard

@@ -26,15 +26,16 @@
             @foreach($items as $item)
             <tr class="productitm">
                 <td>{{ $item['title'] }}</td>
-                <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
+
                 <td>{{ $item['quantity'] }}</td>
+                <td><a href="books/{{ $item['id'] }}">change</a></td>
                 <td>{{ $item['pprice'] }}</td>
 
-                <form action="/removeFromCart" method="post">
+                <td><form action="/removeFromCart" method="post">
                     {!! Form::token() !!}
                     <input type="hidden" name="id" value="{{ $item['id'] }}">
-                    <a href="" onclick="submit" ><td><span class="remove"><img src="images/trash.png" alt="X"></span></td></a>
-                </form>
+                    <span class="remove" ><button type="submit">"X"</button></span>
+                </form></td>
             </tr>
             @endforeach
 

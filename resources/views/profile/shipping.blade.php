@@ -14,36 +14,37 @@
     <h1>Your shipping information
         <span>Please fill all the texts in the fields.</span>
     </h1>
+    <br/>
     <label>
         <span>Full Name:</span>
         <input type="text" class="form-control" name="fullName">
     </label>
-
+<br/>
     <label>
         <span>Address Line 1:</span>
         <input type="text" class="form-control" name="address1">
     </label>
-
+<br/>
     <label>
         <span>Address Line 2:</span>
         <input type="text" class="form-control" name="address2">
     </label>
-
+<br/>
     <label>
         <span>City :</span>
         <input type="text" class="form-control" name="city">
     </label>
-
+<br/>
     <label>
         <span>State :</span>
         <input type="text" class="form-control" name="state">
     </label>
-
+<br/>
     <label>
         <span>ZIP/Postal Code :</span>
         <input type="text" class="form-control" name="zip">
     </label>
-
+<br/>
     <label for="country" class="control-label pull-left">Country: </label>
     <select id="country" name="country" class="form-control">
     <option value="AF">Afghanistan</option>
@@ -296,15 +297,12 @@
     <option value="ZM">Zambia</option>
     <option value="ZW">Zimbabwe</option>
     </select>
-
+<br/>
     <label>
         <span>&nbsp;</span>
         <input type="submit" class="button" value="Save" />
     </label>
+<br/>
 
-    <label>
-        <span>&nbsp;</span>
-        <a href="professorRegister">Register</a>
-    </label>
 </form>
 @endsection
